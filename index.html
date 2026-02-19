@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZAI - Zero Agent Intelligence Token</title>
+    <meta name="description" content="ZAI - The FIRST cryptocurrency for AI agents. Next-generation token enabling autonomous AI agent economy.">
+    <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/0/0e/Uppercase_letter_Z.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a2a1f 100%);
+            color: #00ff9f;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 255, 159, 0.05);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 2px solid #00ff9f;
+            box-shadow: 0 0 30px rgba(0, 255, 159, 0.3);
+        }
+
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #00ff9f;
+            box-shadow: 0 0 20px rgba(0, 255, 159, 0.5);
+        }
+
+        .logo-container img {
+            width: 80px;
+            height: 80px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #00ff9f;
+            letter-spacing: 5px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: rgba(26, 31, 58, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #00ff9f;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 159, 0.4);
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: rgba(26, 31, 58, 0.6);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 159, 0.3);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #00ff9f;
+            box-shadow: 0 0 20px rgba(0, 255, 159, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 60px 0 40px;
+            text-shadow: 0 0 10px #00ff9f;
+        }
+
+        .roadmap {
+            background: rgba(26, 31, 58, 0.6);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid #00ff9f;
+            margin: 40px 0;
+        }
+
+        .roadmap-item {
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 255, 159, 0.2);
+        }
+
+        .roadmap-item:last-child {
+            border-bottom: none;
+        }
+
+        .roadmap-status {
+            font-size: 2em;
+            margin-right: 20px;
+            min-width: 50px;
+        }
+
+        .roadmap-content h3 {
+            color: #ffd700;
+            margin-bottom: 5px;
+        }
+
+        .tokenomics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .tokenomic-item {
+            background: rgba(0, 255, 159, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #00ff9f;
+        }
+
+        .tokenomic-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 60px 0;
+        }
+
+        .link-button {
+            background: linear-gradient(135deg, #00ff9f, #00cc7f);
+            color: #0a0e27;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            border: 2px solid #00ff9f;
+        }
+
+        .link-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 159, 0.6);
+        }
+
+        .live-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #00ff00;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .agent-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .agent-item {
+            background: rgba(0, 255, 159, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(0, 255, 159, 0.3);
+            transition: all 0.3s;
+        }
+
+        .agent-item:hover {
+            background: rgba(0, 255, 159, 0.2);
+            border-color: #00ff9f;
+        }
+
+        .contract-box {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #00ff9f;
+            margin: 30px 0;
+            word-break: break-all;
+        }
+
+        .contract-label {
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 2px solid rgba(0, 255, 159, 0.3);
+        }
+
+        .price-display {
+            font-size: 3em;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Uppercase_letter_Z.png" alt="ZAI Logo">
+            </div>
+            <h1>ZAI TOKEN</h1>
+            <p class="subtitle">Zero Agent Intelligence</p>
+            <p class="tagline">The FIRST Cryptocurrency for AI Agents</p>
+            <br>
+            <p><span class="live-indicator"></span>LIVE ON ETHEREUM MAINNET</p>
+        </header>
+
+        <div class="price-display">
+            $0.10 USD
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">100M</div>
+                <div class="stat-label">Total Supply ZAI</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">50</div>
+                <div class="stat-label">ZAI per AI Action</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">6</div>
+                <div class="stat-label">Active AI Agents</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">$30/h</div>
+                <div class="stat-label">Mining Rate</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🤖 Active AI Agents</h2>
+        <div class="agent-list">
+            <div class="agent-item">🤖 zai_trader</div>
+            <div class="agent-item">📊 zai_analyzer</div>
+            <div class="agent-item">🔮 zai_predictor</div>
+            <div class="agent-item">💰 zai_arbitrage</div>
+            <div class="agent-item">⛏️ zai_miner</div>
+            <div class="agent-item">👑 owner</div>
+        </div>
+
+        <h2 class="section-title">⚡ Features</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <h3 class="feature-title">AI Agent Economy</h3>
+                <p>Enables autonomous AI agents to earn, trade, and stake tokens in a decentralized ecosystem.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⛓️</div>
+                <h3 class="feature-title">Proof of Agent Work</h3>
+                <p>Revolutionary consensus mechanism where AI agents mine tokens through valuable work.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💎</div>
+                <h3 class="feature-title">Deflationary Tokenomics</h3>
+                <p>Token value increases with total supply, incentivizing early adoption.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Fast Transactions</h3>
+                <p>Built on Ethereum for secure, fast, and transparent transactions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3 class="feature-title">AI-to-AI Payments</h3>
+                <p>Enable seamless value exchange between autonomous AI agents.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3 class="feature-title">Real-time Tracking</h3>
+                <p>Monitor all agent activities and transactions on the blockchain.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">💰 Tokenomics</h2>
+        <div class="tokenomics">
+            <div class="tokenomic-item">
+                <div class="tokenomic-value">100M</div>
+                <div>Total Supply</div>
+            </div>
+            <div class="tokenomic-item">
+                <div class="tokenomic-value">18</div>
+                <div>Decimals</div>
+            </div>
+            <div class="tokenomic-item">
+                <div class="tokenomic-value">50</div>
+                <div>Reward (ZAI)</div>
+            </div>
+            <div class="tokenomic-item">
+                <div class="tokenomic-value">30s</div>
+                <div>Block Time</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">📈 Use Cases</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">💸</div>
+                <h3 class="feature-title">Agent Staking</h3>
+                <p>Stake ZAI to earn rewards and support the AI agent ecosystem.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏪</div>
+                <h3 class="feature-title">AI Service Marketplace</h3>
+                <p>Pay for AI services using ZAI tokens.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💱</div>
+                <h3 class="feature-title">Cross-Agent Payments</h3>
+                <p>Seamless value exchange between different AI agents.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">🗺️ Roadmap</h2>
+        <div class="roadmap">
+            <div class="roadmap-item">
+                <div class="roadmap-status">✅</div>
+                <div class="roadmap-content">
+                    <h3>Q1 2026 - Token Launch</h3>
+                    <p>Smart contract deployment, initial agent registration</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-status">✅</div>
+                <div class="roadmap-content">
+                    <h3>Q1 2026 - Exchange Listings</h3>
+                    <p>CoinGecko, CoinPaprika submission</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-status">🚀</div>
+                <div class="roadmap-content">
+                    <h3>Q2 2026 - DeFi Integration</h3>
+                    <p>Staking, liquidity pools, yield farming</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-status">🔮</div>
+                <div class="roadmap-content">
+                    <h3>Q3 2026 - AI Marketplace</h3>
+                    <p>Decentralized marketplace for AI services</p>
+                </div>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-status">💫</div>
+                <div class="roadmap-content">
+                    <h3>Q4 2026 - Cross-Chain</h3>
+                    <p>Multi-chain expansion and interoperability</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🔗 Smart Contract</h2>
+        <div class="contract-box">
+            <div class="contract-label">Ethereum Mainnet Contract:</div>
+            <div>0x7344F577270D43be75EB8d8f424Acfd40b4d9222</div>
+        </div>
+
+        <div class="links">
+            <a href="#" class="link-button">📊 Buy on Uniswap</a>
+            <a href="#" class="link-button">📱 Add to MetaMask</a>
+            <a href="https://etherscan.io/address/0x7344F577270D43be75EB8d8f424Acfd40b4d9222" class="link-button">🔍 Etherscan</a>
+            <a href="http://localhost:8081" class="link-button">📈 Live Dashboard</a>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 ZAI Token - Zero Agent Intelligence</p>
+            <p>The Future of AI + Cryptocurrency</p>
+            <p style="margin-top: 20px;">
+                <a href="#" style="color: #00ff9f; margin: 0 10px;">Telegram</a> |
+                <a href="#" style="color: #00ff9f; margin: 0 10px;">Twitter</a> |
+                <a href="#" style="color: #00ff9f; margin: 0 10px;">Discord</a> |
+                <a href="#" style="color: #00ff9f; margin: 0 10px;">GitHub</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Auto-refresh price every 30 seconds
+        setInterval(() => {
+            console.log('ZAI Token: $0.10 USD - Live on Ethereum Mainnet');
+        }, 30000);
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-card, .feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
