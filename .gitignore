@@ -1,0 +1,60 @@
+# Security - Sensitive files
+*.key
+*.pem
+*.p12
+*.pfx
+*.secret
+*.password
+.env
+.env.*
+credentials.json
+private_key.txt
+wallet.dat
+
+# Private keys in code
+private_key
+privateKey
+SECRET_KEY
+API_KEY
+
+# Compiled files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.o
+*.a
+
+# Build artifacts
+/bin/
+/dist/
+/build/
+/target/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Block data (too many files)
+zai_block_*.json
+
+# Gas/Price tracking
+gas_*.json
+price_*.json
